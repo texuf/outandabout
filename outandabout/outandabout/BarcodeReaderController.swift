@@ -12,11 +12,11 @@ import Foundation
 
 class BarcodeReaderController: RSCodeReaderViewController {
     
-    var barcodevalue :String = ""
+    var didDelegate: Bool = false
+    var delegate: writeBarcodeBackDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
         
         self.focusMarkLayer.strokeColor = UIColor.redColor().CGColor
         
@@ -27,23 +27,21 @@ class BarcodeReaderController: RSCodeReaderViewController {
         }
         
         self.barcodesHandler = { barcodes in
-            for barcode in barcodes {
-                println(barcode)
-                self.barcodevalue = barcode.stringValue
-                self.performSegueWithIdentifier("returnvalue", sender: self)
-                //self.dismissViewControllerAnimated(true, completion: nil)
+            if(!self.didDelegate)
+            {
+                println("HANDLER!!!!!!")
+                self.didDelegate = true
+                var barcodevalue :String = ""
+                for barcode in barcodes {
+                    println(barcode)
+                    barcodevalue = barcode.stringValue
+                    
+                }
+                self.delegate?.writeBarcodeBack(barcodevalue)
+                self.dismissViewControllerAnimated(true, completion: nil)
             }
         }
         
     }
-
-
-
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "returnvalue" {
-            var segueBack = segue.destinationViewController as ViewController
-            segueBack.barcodevalue = barcodevalue
-        }
-    }
-
+	
 }

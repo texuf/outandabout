@@ -7,7 +7,6 @@
         <!--OutAndAbout-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="outandabout" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
@@ -34,16 +33,17 @@
                         <barButtonItem key="leftBarButtonItem" title="Camera" id="alz-gO-Lcg">
                             <connections>
                                 <action selector="onCameraButton:" destination="BYZ-38-t0r" id="zuy-vW-gnw"/>
-                                <segue destination="ELg-Rs-qJG" kind="popoverPresentation" popoverAnchorBarButtonItem="alz-gO-Lcg" id="YVg-hs-ABa">
-                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                </segue>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="rWw-zl-Cqu" id="Y0S-j7-Mf4"/>
+                        <segue destination="ELg-Rs-qJG" kind="popoverPresentation" identifier="cameraPopover" popoverAnchorView="8bC-Xf-vdC" id="ab8-sN-YCo">
+                            <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                        </segue>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1266" y="397"/>
         </scene>
@@ -63,12 +63,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wcG-ic-cnr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1266" y="1136"/>
+            <point key="canvasLocation" x="2022" y="397"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="BpY-dk-wi4">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="qRo-nD-VjZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xZt-mm-hmb" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="0VK-DR-zqW">
@@ -80,6 +79,7 @@
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="Vo9-2a-wDV"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qRo-nD-VjZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="440" y="1090"/>
         </scene>

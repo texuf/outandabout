@@ -240,6 +240,7 @@
 				TargetAttributes = {
 					C2C70C9F1A57A639004A69B5 = {
 						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = 3JZXY2WLZ8;
 					};
 					C2C70CB41A57A639004A69B5 = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -505,6 +506,7 @@
 				C2C70CC11A57A639004A69B5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C2C70CC21A57A639004A69B5 /* Build configuration list for PBXNativeTarget "outandaboutTests" */ = {
 			isa = XCConfigurationList;
@@ -513,6 +515,7 @@
 				C2C70CC41A57A639004A69B5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

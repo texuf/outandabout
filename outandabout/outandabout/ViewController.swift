@@ -8,7 +8,11 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+protocol writeBarcodeBackDelegate {
+    func writeBarcodeBack(value: String)
+}
+
+class ViewController: UIViewController, writeBarcodeBackDelegate	 {
     
     var barcodevalue :String = ""
     
@@ -17,7 +21,8 @@ class ViewController: UIViewController {
     @IBAction func onCameraButton(sender: AnyObject) {
         println("CAMERA BUTTON")
         
-        //self.performSegueWithIdentifier("barcode", sender: self)
+        self.performSegueWithIdentifier("cameraPopover", sender: self)
+        
     }
     
     override func viewDidLoad() {
@@ -36,7 +41,22 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        let secondVC = segue.destinationViewController as BarcodeReaderController
+        secondVC.delegate = self;
+        
+        println("PREP!! "	)
+    }
+    
+    func writeBarcodeBack(value: String)
+    {
+        println("YEAH!!!!!!!!!! " + value)
+    }
 
 
+    //@IBAction func unwindToList(segue: UIStoryboardSegue) {
+    //        println("UNWIND" + 	(segue.destinationViewController as BarcodeReaderController).barcodevalue	 )
+    //}
 }
 
