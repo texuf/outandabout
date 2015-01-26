@@ -24,3 +24,4 @@ DerivedData
 #
 # Pods/
 .DS_Store
+outandabout/outandabout/Env.swift

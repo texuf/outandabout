@@ -18,6 +18,8 @@ class ViewController: UIViewController, writeBarcodeBackDelegate	 {
     
     @IBOutlet weak var tableView: UITableView!
     
+
+    
     @IBAction func onCameraButton(sender: AnyObject) {
         println("CAMERA BUTTON")
         

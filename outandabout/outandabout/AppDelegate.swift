@@ -13,9 +13,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
+    
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        
+        Parse.enableLocalDatastore()
+        Parse.setApplicationId(envVars.parseApplicationId, clientKey: envVars.parseClientKey)
+        PFAnalytics.trackAppOpenedWithLaunchOptionsInBackground(launchOptions, nil)
+        
+        
+        var installation = PFInstallation.currentInstallation()
+        //println("device token: " + installation.deviceToken)
+        println("installid : " + installation.installationId)
+        
         return true
     }
 
