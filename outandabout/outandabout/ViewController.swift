@@ -12,7 +12,7 @@ protocol writeBarcodeBackDelegate {
     func writeBarcodeBack(value: String)
 }
 
-class ViewController: UIViewController, writeBarcodeBackDelegate	 {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, writeBarcodeBackDelegate	 {
     
     var barcodevalue :String = ""
     
@@ -32,6 +32,10 @@ class ViewController: UIViewController, writeBarcodeBackDelegate	 {
         // Do any additional setup after loading the view, typically from a nib.
         
         println("VIEW DID LOAD " + barcodevalue)
+        
+        //pull data from parse, based on install id
+        
+        //populate list
     }
 
     override func viewDidAppear(animated: Bool) {
@@ -47,8 +51,6 @@ class ViewController: UIViewController, writeBarcodeBackDelegate	 {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         let secondVC = segue.destinationViewController as BarcodeReaderController
         secondVC.delegate = self;
-        
-        println("PREP!! "	)
     }
     
     func writeBarcodeBack(value: String)
@@ -56,9 +58,29 @@ class ViewController: UIViewController, writeBarcodeBackDelegate	 {
         println("YEAH!!!!!!!!!! " + value)
     }
 
-
-    //@IBAction func unwindToList(segue: UIStoryboardSegue) {
-    //        println("UNWIND" + 	(segue.destinationViewController as BarcodeReaderController).barcodevalue	 )
-    //}
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    {
+        return max(1, dataMgr.interactions.count)
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+    {
+        let cell:UITableViewCell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier:"convo");
+        
+        if(dataMgr.interactions.count > 0)
+        {
+            cell.textLabel?.text = dataMgr.interactions[indexPath.row].barcode_id;
+        }
+        else
+        {
+            cell.textLabel?.text = "No conversations"
+            cell.detailTextLabel?.text = "Scan a barcode with the camera button"
+        }
+        
+        
+        return cell;
+    }
+    
 }
 
